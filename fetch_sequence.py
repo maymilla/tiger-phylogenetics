@@ -4,38 +4,23 @@ import os
 
 Entrez.email = "maylayaffa@gmail.com"
 
-# daftar subspesies yang dicari
-# format: (nama_display, query_ncbi)
 TARGETS = [
-  ("P_t_sumatrae",   "Panthera tigris sumatrae cytochrome b"),
-  ("P_t_sondaica",   "Panthera tigris sondaica cytochrome b"),
-  ("P_t_balica",     "Panthera tigris balica cytochrome b"), # nggak ada data, tapi tetap dimasukin biar lengkap
-  ("P_t_tigris",     "Panthera tigris tigris cytochrome b"),
-  ("P_t_altaica",    "Panthera tigris altaica cytochrome b"),
-  ("P_t_corbetti",   "Panthera tigris corbetti cytochrome b"),
-  ("P_t_jacksoni",   "Panthera tigris jacksoni cytochrome b"),
+    ("P_t_sumatrae", "AF053054.1"),   # Harimau Sumatera
+    ("P_t_sondaica", "OQ601561.1"),   # Harimau Jawa (punah)
+    ("P_t_tigris",   "AF053053.1"),   # Harimau Bengal
+    ("P_t_altaica",  "AF053051.1"),   # Harimau Siberian/Amur
+    ("P_t_corbetti", "AF053050.1"),   # Harimau Indochinese
+    ("P_t_jacksoni", "EU184702.1"),   # Harimau Malayan
 ]
 
 os.makedirs("data", exist_ok=True)
 
 
-def fetch_sequence(label, query, max_results=3):
+def fetch_sequence(label, accession_id):
   """
-  Cari sekuens di NCBI berdasarkan query, ambil accession pertama yang ketemu, return SeqRecord atau None kalau gagal.
+  Cari sekuens di NCBI berdasarkan accession id, ambil accession pertama yang ketemu, return SeqRecord atau None kalau gagal.
   """
   print(f"Mencari: {label} ...")
-  
-  # Step 2a: Cari accession ID yang cocok
-  handle = Entrez.esearch(db="nucleotide", term=query, retmax=max_results)
-  record = Entrez.read(handle)
-  handle.close()
-  
-  ids = record["IdList"]
-  if not ids:
-    print(f"Tidak ditemukan data untuk: {label}")
-    return None, None
-    
-  accession_id = ids[0]  
   
   handle = Entrez.efetch(
     db="nucleotide",
@@ -60,8 +45,8 @@ def main():
   all_records = []
   accession_map = {} 
   
-  for label, query in TARGETS:
-    record, acc_id = fetch_sequence(label, query)
+  for label, accession_id in TARGETS:
+    record, acc_id = fetch_sequence(label, accession_id)
     if record:
       all_records.append(record)
       accession_map[label] = acc_id
