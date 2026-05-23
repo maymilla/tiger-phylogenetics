@@ -1,0 +1,107 @@
+{
+  "P_t_sumatrae_vs_P_t_sondaica": {
+    "score": 2000,
+    "identity_pct": 94.95,
+    "aln_length": 1069,
+    "end_pos_seq1": 1108,
+    "end_pos_seq2": 1042
+  },
+  "P_t_sumatrae_vs_P_t_tigris": {
+    "score": 2274,
+    "identity_pct": 99.65,
+    "aln_length": 1142,
+    "end_pos_seq1": 1140,
+    "end_pos_seq2": 1140
+  },
+  "P_t_sumatrae_vs_P_t_altaica": {
+    "score": 1965,
+    "identity_pct": 83.72,
+    "aln_length": 1241,
+    "end_pos_seq1": 1140,
+    "end_pos_seq2": 1140
+  },
+  "P_t_sumatrae_vs_P_t_corbetti": {
+    "score": 1974,
+    "identity_pct": 84.17,
+    "aln_length": 1238,
+    "end_pos_seq1": 1140,
+    "end_pos_seq2": 1140
+  },
+  "P_t_sumatrae_vs_P_t_jacksoni": {
+    "score": 623,
+    "identity_pct": 83.25,
+    "aln_length": 394,
+    "end_pos_seq1": 429,
+    "end_pos_seq2": 361
+  },
+  "P_t_sondaica_vs_P_t_tigris": {
+    "score": 1994,
+    "identity_pct": 94.85,
+    "aln_length": 1068,
+    "end_pos_seq1": 1042,
+    "end_pos_seq2": 1108
+  },
+  "P_t_sondaica_vs_P_t_altaica": {
+    "score": 1865,
+    "identity_pct": 86.91,
+    "aln_length": 1115,
+    "end_pos_seq1": 1042,
+    "end_pos_seq2": 1108
+  },
+  "P_t_sondaica_vs_P_t_corbetti": {
+    "score": 1874,
+    "identity_pct": 87.41,
+    "aln_length": 1112,
+    "end_pos_seq1": 1042,
+    "end_pos_seq2": 1108
+  },
+  "P_t_sondaica_vs_P_t_jacksoni": {
+    "score": 639,
+    "identity_pct": 86.05,
+    "aln_length": 387,
+    "end_pos_seq1": 363,
+    "end_pos_seq2": 361
+  },
+  "P_t_tigris_vs_P_t_altaica": {
+    "score": 1959,
+    "identity_pct": 83.57,
+    "aln_length": 1242,
+    "end_pos_seq1": 1140,
+    "end_pos_seq2": 1140
+  },
+  "P_t_tigris_vs_P_t_corbetti": {
+    "score": 1968,
+    "identity_pct": 84.02,
+    "aln_length": 1239,
+    "end_pos_seq1": 1140,
+    "end_pos_seq2": 1140
+  },
+  "P_t_tigris_vs_P_t_jacksoni": {
+    "score": 617,
+    "identity_pct": 82.78,
+    "aln_length": 395,
+    "end_pos_seq1": 429,
+    "end_pos_seq2": 361
+  },
+  "P_t_altaica_vs_P_t_corbetti": {
+    "score": 2265,
+    "identity_pct": 99.13,
+    "aln_length": 1145,
+    "end_pos_seq1": 1140,
+    "end_pos_seq2": 1140
+  },
+  "P_t_altaica_vs_P_t_jacksoni": {
+    "score": 702,
+    "identity_pct": 96.72,
+    "aln_length": 366,
+    "end_pos_seq1": 429,
+    "end_pos_seq2": 361
+  },
+  "P_t_corbetti_vs_P_t_jacksoni": {
+    "score": 702,
+    "identity_pct": 96.72,
+    "aln_length": 366,
+    "end_pos_seq1": 429,
+    "end_pos_seq2": 361
+  }
+}
