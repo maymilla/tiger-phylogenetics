@@ -8,7 +8,7 @@ import os
 INPUT_FASTA = "data/raw_sequences.fasta"
 RAW_ALIGNED = "data/aligned_raw.fasta"       
 OUTPUT_FASTA = "data/aligned_sequences.fasta" 
-MAFFT_PATH = r"C:\Users\Mayla\Downloads\mafft-7.526-win64-signed\mafft-win\mafft.bat"
+MAFFT_PATH = r"C:\Users\raiha\Downloads\mafft-7.526-win64-signed\mafft-win\mafft.bat"
  
 
 def run_mafft(input_path, output_path):

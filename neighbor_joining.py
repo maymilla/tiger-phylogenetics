@@ -37,7 +37,7 @@ def compute_branch_lengths(matrix, i, j, species_remaining):
 
     return branch_i, branch_j
 
-def update_matrix(matrix, i, j, species_remaining):
+def update_matrix(matrix, i, j, species_remaining, node_name):
     # after i and j joined as node u, update matrix
     N = len(species_remaining)
     new_distances = []
@@ -49,14 +49,11 @@ def update_matrix(matrix, i, j, species_remaining):
     
     new_matrix = np.delete(matrix, [i, j], axis=0)
     new_matrix = np.delete(new_matrix, [i, j], axis=1)
-
     new_row = np.array(new_distances)
     new_matrix = np.vstack([new_matrix, new_row])
-    
     new_col = np.array(new_distances+[0.0]).reshape(-1, 1)
     new_matrix = np.hstack([new_matrix, new_col])
 
-    node_name = f"Node_{N}"
     new_species = [s for idx, s in enumerate(species_remaining) if idx != i and idx != j]
     new_species.append(node_name)
     
@@ -65,6 +62,7 @@ def update_matrix(matrix, i, j, species_remaining):
 def neighbor_joining(matrix, species):
     current_matrix = matrix.copy()
     current_species = species.copy()
+    current_matrix = np.nan_to_num(current_matrix, nan=9999.0)
     edges = []
     node_counter = 0
 
@@ -77,11 +75,24 @@ def neighbor_joining(matrix, species):
         node_counter += 1
         
         edges.append((node_name, current_species[i], branch_i))
-        edges.append((node_name, current_species[j], branch_j)) 
+        edges.append((node_name, current_species[j], branch_j))
 
-        current_matrix, current_species = update_matrix(current_matrix, i, j, current_species)
+        current_matrix, current_species = update_matrix(current_matrix, i, j, current_species, node_name)
 
     last_branch = current_matrix[0][1] / 2
-    edges.append((current_species[0], current_species[1], last_branch))
+    root_name = f"Node_{node_counter}"
+    edges.append((root_name, current_species[0], last_branch))
+    edges.append((root_name, current_species[1], last_branch))
 
+    return edges
+
+def print_edges(edges):
+    print("\nEdges pohon (parent → child: branch_length):")
+    for parent, child, bl in edges:
+        short_child = child.split("|")[0].strip() if "|" in child else child
+        print(f"  {parent} → {short_child}: {bl:.6f}")
+
+def main(matrix, species):
+    edges = neighbor_joining(matrix, species)
+    print_edges(edges)
     return edges

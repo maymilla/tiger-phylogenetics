@@ -89,3 +89,22 @@ def build_distance_matrix(sequences_dict):
                     matrix[j][i] = res[0]
 
     return matrix, species
+
+def main():
+    sequences_dict = parse_fasta("data/aligned_sequences.fasta")
+    matrix, species = build_distance_matrix(sequences_dict)
+    
+    short_names = [sp.split("|")[0].strip().replace("P_t_", "") for sp in species]
+    print("\nDistance Matrix (K2P):")
+    print(f"{'':15}", end="")
+    for name in short_names:
+        print(f"{name:>12}", end="")
+    print()
+    for i, name in enumerate(short_names):
+        print(f"{name:15}", end="")
+        for j in range(len(species)):
+            val = matrix[i][j]
+            print(f"{val:>12.4f}" if not np.isnan(val) else f"{'NaN':>12}", end="")
+        print()
+    
+    return sequences_dict, matrix, species

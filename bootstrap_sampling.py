@@ -104,3 +104,14 @@ def attach_bootstrap_to_tree(edges, bootstrap_support):
         node_support[node] = round(support_value, 1)
     
     return node_support
+
+def main(sequences_dict, edges, n_bootstrap=1000):
+    bootstrap_support = run_bootstrap(sequences_dict, n_bootstrap)
+    node_support = attach_bootstrap_to_tree(edges, bootstrap_support)
+    
+    print("\nBootstrap support per node:")
+    for node, support in node_support.items():
+        status = "kuat" if support >= 70 else "lemah"
+        print(f"  {node}: {support:.1f}% ({status})")
+    
+    return node_support
