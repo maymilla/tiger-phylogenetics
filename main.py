@@ -27,7 +27,7 @@ if __name__ == "__main__":
     node_support = bootstrap(sequences_dict, edges)
 
     print("\n=== Step 7: Evolutionary Gap Analysis ===")
-    loss, distinctiveness = gap(edges, matrix, species)
+    loss, distinctiveness = gap(edges, matrix, species, node_support)
 
     print("\n=== Step 8: Visualisasi Pohon ===")
-    visualize(edges, node_support=node_support)
+    visualize(edges, node_support)

@@ -82,7 +82,7 @@ def summarize_gap_analysis(evolutionary_loss, distinctiveness_scores, node_suppo
         "bootstrap_support": node_support
     }
 
-def main(edges, matrix, species):
+def main(edges, matrix, species, node_support={}):
     extinct = [sp for sp in species if "sondaica" in sp.lower()]
     if not extinct:
         print("Warning: tidak ada spesies punah ditemukan di data")
@@ -91,6 +91,6 @@ def main(edges, matrix, species):
     print(f"Spesies punah: {[s.split('|')[0].strip() for s in extinct]}")
     loss = compute_evolutionary_loss(edges, extinct)
     distinctiveness = compute_evolutionary_distinctiveness(matrix, species)
-    summarize_gap_analysis(loss, distinctiveness, {})
+    summarize_gap_analysis(loss, distinctiveness, node_support)
     
     return loss, distinctiveness
